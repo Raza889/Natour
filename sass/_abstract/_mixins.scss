@@ -1,0 +1,55 @@
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+@mixin aBscenter
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+/* Break Points
+mob=mobile phone
+tabp=tab-port
+tabl=tabland
+desk=desktop
+*/
+/*
+calculation
+1 em=16px;
+for mobile 
+max-width =600px 
+600/16 =37.5em
+for tablets in port mode
+max-width =900px
+900/16=56.25em
+for tablets in landescape mode or small desktop screen max-withd=1200px
+1200/16=75em
+for larger screen width more then 1800px
+1800/16=112.5em
+*/
+@mixin respon($breakpoint) {
+    @if$breakpoint== mob
+    { @media only screen and(max-width:37.5em) 
+        { @content}
+    }
+    @if$breakpoint== tabp
+    { @media only screen and(max-width:56.25em)
+        { @content}
+    }
+    @if$breakpoint== tabl
+    { @media only screen and(max-width:75em)
+        { @content}
+    }
+    @if$breakpoint== desk
+    { @media only screen and(min-width:112.5em)
+        { @content}
+    }
+    
+    
+}
